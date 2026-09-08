@@ -44,8 +44,10 @@ export async function runTask(env: Env, task: Task, userPrompt: string): Promise
         messages: [{ role: 'system', content: SYSTEM_PROMPT }, { role: 'user', content: userPrompt }],
         max_tokens: 4000,
         temperature: 0.2,
-      } as never)) as { response?: string };
-      raw = res.response ?? '';
+      } as never)) as { response?: unknown; choices?: { message?: { content?: unknown } }[] };
+      // Workers AI models differ in shape: a plain string, an already-parsed object, or an OpenAI-style choices array.
+      const r = res.response ?? res.choices?.[0]?.message?.content ?? '';
+      raw = typeof r === 'string' ? r : JSON.stringify(r);
     }
     const output = parseJson(raw);
     return { ok: true, provider, model, output, raw };
