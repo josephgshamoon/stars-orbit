@@ -1,0 +1,4 @@
+# Copy to .dev.vars for local development (never commit .dev.vars)
+AI_PROVIDER=mock
+DEV_USER_EMAIL=od@starsorbit.org
+# ANTHROPIC_API_KEY=sk-ant-...

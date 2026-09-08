@@ -1,0 +1,25 @@
+{
+  "name": "stars-orbit-ops",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Stars Orbit operations PoC: M&E, HR, finance, logistics on Cloudflare Workers + D1 + Workers AI",
+  "scripts": {
+    "dev": "wrangler dev --local",
+    "deploy": "wrangler deploy",
+    "typecheck": "tsc --noEmit",
+    "db:migrate:local": "wrangler d1 migrations apply soc_ops --local",
+    "db:migrate:remote": "wrangler d1 migrations apply soc_ops --remote",
+    "db:seed:local": "wrangler d1 execute soc_ops --local --file=./seed/seed.sql",
+    "db:seed:remote": "wrangler d1 execute soc_ops --remote --file=./seed/seed.sql",
+    "test": "node --test tests/*.test.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.124.0",
+    "hono": "^4.13.7"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20260908.1",
+    "typescript": "^7.0.2",
+    "wrangler": "^4.130.0"
+  }
+}

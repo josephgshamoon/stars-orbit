@@ -1,0 +1,27 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "stars-orbit-ops",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-09-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": { "directory": "./public", "binding": "ASSETS", "not_found_handling": "single-page-application", "run_worker_first": ["/api/*"] },
+  "observability": { "enabled": true },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "soc_ops",
+      // Replace with the id printed by: wrangler d1 create soc_ops
+      "database_id": "00000000-0000-0000-0000-000000000000",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "ai": { "binding": "AI" },
+  "vars": {
+    // "workers-ai" (default, no key needed) | "anthropic" (set ANTHROPIC_API_KEY secret) | "mock" (local dev without AI)
+    "AI_PROVIDER": "workers-ai",
+    "WORKERS_AI_MODEL": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+    "ANTHROPIC_MODEL": "claude-opus-5",
+    // Local-dev identity when no Cloudflare Access header is present. Leave empty in production.
+    "DEV_USER_EMAIL": ""
+  }
+}
