@@ -22,6 +22,6 @@
     "WORKERS_AI_MODEL": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
     "ANTHROPIC_MODEL": "claude-opus-5",
     // Local-dev identity when no Cloudflare Access header is present. Leave empty in production.
-    "DEV_USER_EMAIL": ""
+    "DEV_USER_EMAIL": "od@starsorbit.org"
   }
 }
