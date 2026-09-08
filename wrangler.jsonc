@@ -11,7 +11,7 @@
       "binding": "DB",
       "database_name": "soc_ops",
       // Replace with the id printed by: wrangler d1 create soc_ops
-      "database_id": "00000000-0000-0000-0000-000000000000",
+      "database_id": "ac17f057-63eb-46ec-a943-a469b817bf91",
       "migrations_dir": "migrations"
     }
   ],
